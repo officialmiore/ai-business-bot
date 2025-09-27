@@ -1,223 +1,197 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Business Command Center 🚀</title>
-  <style>
-    :root {
-      --primary: #4CAF50;
-      --secondary: #2c3e50;
-      --accent: #ff9800;
-      --bg: #f4f6f9;
-      --white: #ffffff;
-      --shadow: rgba(0, 0, 0, 0.1);
-    }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: var(--bg);
-      color: var(--secondary);
-    }
-    header {
-      background: var(--primary);
-      color: white;
-      text-align: center;
-      padding: 1.5rem;
-      box-shadow: 0 4px 8px var(--shadow);
-    }
-    header h1 { margin: 0; }
-    nav {
-      display: flex;
-      justify-content: center;
-      background: var(--white);
-      box-shadow: 0 2px 6px var(--shadow);
-    }
-    nav button {
-      flex: 1;
-      padding: 1rem;
-      border: none;
-      background: none;
-      font-weight: bold;
-      cursor: pointer;
-      color: var(--secondary);
-      transition: background 0.3s;
-    }
-    nav button:hover, nav button.active {
-      background: var(--primary);
-      color: white;
-    }
-    main {
-      padding: 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    section {
-      display: none;
-      animation: fade 0.4s ease-in-out;
-    }
-    section.active { display: block; }
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .card {
-      background: var(--white);
-      border-radius: 10px;
-      padding: 1.5rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 4px 12px var(--shadow);
-    }
-    .card h2 {
-      margin-top: 0;
-      color: var(--primary);
-    }
-    #log {
-      max-height: 200px;
-      overflow-y: auto;
-      font-size: 0.9rem;
-      background: #fafafa;
-      border: 1px solid #ddd;
-      padding: 1rem;
-      border-radius: 6px;
-    }
-    #log p {
-      margin: 0.3rem 0;
-      border-bottom: 1px dotted #eee;
-      padding-bottom: 0.2rem;
-    }
-    .income {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--accent);
-      text-align: center;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Command Center — Income Machine</title>
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <header>
-    <h1>AI Business Command Center 🚀</h1>
-    <p>Autonomous AI creating income streams 24/7</p>
-  </header>
-
-  <nav>
-    <button class="active" data-tab="dashboard">Dashboard</button>
-    <button data-tab="youtube">YouTube</button>
-    <button data-tab="affiliate">Affiliate</button>
-    <button data-tab="print">Print-on-Demand</button>
-    <button data-tab="social">Social Media</button>
-    <button data-tab="analytics">Analytics</button>
-  </nav>
-
-  <main>
-    <!-- Dashboard -->
-    <section id="dashboard" class="active">
-      <div class="card">
-        <h2>AI Activity Log 🧠</h2>
-        <div id="log"><p>[System Idle] Waiting for AI tasks...</p></div>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <h1>AI Income Machine</h1>
+        <p>Dashboard</p>
       </div>
-      <div class="card">
-        <h2>Total Income 💰</h2>
-        <div class="income" id="income">€0.00</div>
+
+      <nav>
+        <button class="tab-btn active" data-tab="overview">Overzicht</button>
+        <button class="tab-btn" data-tab="channels">Kanalen</button>
+        <button class="tab-btn" data-tab="youtube">YouTube</button>
+        <button class="tab-btn" data-tab="affiliate">Affiliate</button>
+        <button class="tab-btn" data-tab="pod">Print-on-Demand</button>
+        <button class="tab-btn" data-tab="social">Social</button>
+        <button class="tab-btn" data-tab="analytics">Analytics</button>
+        <button class="tab-btn" data-tab="alerts">Alerts</button>
+        <button class="tab-btn" data-tab="settings">Instellingen</button>
+      </nav>
+
+      <div class="sidebar-foot">
+        <button id="runWorkerBtn" class="ghost">Run worker (test)</button>
+        <small>Versie: 1.0</small>
       </div>
-      <div class="card">
-        <h2>Monthly Invoices 🧾</h2>
-        <div id="invoices"><p>No invoices yet.</p></div>
-      </div>
-    </section>
+    </aside>
 
-    <!-- YouTube -->
-    <section id="youtube">
-      <div class="card">
-        <h2>YouTube Automation 📺</h2>
-        <p>AI generates trending video ideas, scripts, and automates uploads.</p>
-      </div>
-    </section>
+    <main class="main">
+      <!-- OVERVIEW -->
+      <section id="overview" class="tab active">
+        <header class="panel">
+          <h2>Overzicht</h2>
+          <div class="panel-actions">
+            <button id="refreshOverview">Ververs</button>
+            <button id="openChatBtn">AI Chat</button>
+          </div>
+        </header>
 
-    <!-- Affiliate -->
-    <section id="affiliate">
-      <div class="card">
-        <h2>Affiliate Marketing 🔗</h2>
-        <p>AI finds profitable products and creates campaigns automatically.</p>
-      </div>
-    </section>
+        <div class="grid">
+          <div class="card">
+            <h3>AI Activity Log</h3>
+            <div id="activityLog" class="log">Geen activiteiten nog.</div>
+          </div>
 
-    <!-- Print-on-Demand -->
-    <section id="print">
-      <div class="card">
-        <h2>Print-on-Demand 👕</h2>
-        <p>AI designs products and pushes them to stores like Shopify/Printful.</p>
-      </div>
-    </section>
+          <div class="card">
+            <h3>Totaal inkomen</h3>
+            <div id="incomeTotal" class="big">€0.00</div>
+            <div class="mini">Laatste maand: <span id="incomeMonth">€0.00</span></div>
+          </div>
 
-    <!-- Social Media -->
-    <section id="social">
-      <div class="card">
-        <h2>Social Media Growth 📱</h2>
-        <p>AI creates posts, manages accounts, and grows followers automatically.</p>
-      </div>
-    </section>
+          <div class="card">
+            <h3>Publicatie queue</h3>
+            <div id="publishQueue">Geen items klaar.</div>
+          </div>
+        </div>
+      </section>
 
-    <!-- Analytics -->
-    <section id="analytics">
-      <div class="card">
-        <h2>Analytics 📊</h2>
-        <p>Track income streams, performance, and receive strategy suggestions.</p>
-      </div>
-    </section>
-  </main>
+      <!-- CHANNELS -->
+      <section id="channels" class="tab">
+        <header class="panel"><h2>Kanalen Manager</h2></header>
+        <div class="card">
+          <p>Hier beheer je je YouTube-kanalen (multi-channel support). Maak kanalen aan, verbind accounts en verdeel productie.</p>
+          <div class="form-row">
+            <input id="newChannelName" placeholder="Nieuwe kanaalnaam (bv. EcoGadgets NL)">
+            <select id="newChannelLang"><option value="nl">Nederlands</option><option value="en">English</option><option value="de">Deutsch</option></select>
+            <button id="createChannelBtn">Maak kanaal</button>
+          </div>
+          <div id="channelsList"></div>
+        </div>
+      </section>
 
-  <script>
-    // Tab switching
-    const buttons = document.querySelectorAll("nav button");
-    const sections = document.querySelectorAll("main section");
-    buttons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        buttons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        sections.forEach(sec => sec.classList.remove("active"));
-        document.getElementById(btn.dataset.tab).classList.add("active");
-      });
-    });
+      <!-- YOUTUBE -->
+      <section id="youtube" class="tab">
+        <header class="panel"><h2>YouTube</h2></header>
 
-    // Simulation of AI tasks
-    const log = document.getElementById("log");
-    const income = document.getElementById("income");
-    const invoices = document.getElementById("invoices");
-    let totalIncome = 0;
-    let monthEarnings = 0;
-    let lastMonth = new Date().getMonth();
+        <div class="card">
+          <h3>OAuth & upload</h3>
+          <p>Klik <b>Authorize YouTube</b> 1x per Google-account, volg Google stappen. Daarna kan AI automatisch uploaden.</p>
+          <div class="form-row">
+            <button id="authYoutubeBtn">Authorize YouTube</button>
+            <button id="forceUploadBtn">Force upload ready videos</button>
+          </div>
+          <div id="youtubeStatus" class="mini">Status: niet geautoriseerd</div>
+        </div>
 
-    const tasks = [
-      "Generated a trending YouTube script 🎬",
-      "Created a new Shopify store 🛍️",
-      "Designed 3 new Print-on-Demand T-shirts 👕",
-      "Posted 5 affiliate articles 🔗",
-      "Analyzed TikTok trends 📱",
-      "Optimized ad campaign for fitness niche 💪",
-      "Scanned global hashtags for new products 🌍"
-    ];
+        <div class="card">
+          <h3>Genereer video</h3>
+          <p>Genereer script & assets (AI) — daarna plaatst AI in de publicatie-queue.</p>
+          <input id="videoTitlePrompt" placeholder="Zoekterm of onderwerp (bv. 'beste eco gadgets 2025')">
+          <div class="form-row">
+            <select id="videoChannelSelect"></select>
+            <button id="genVideoBtn">Genereer en queue</button>
+          </div>
+          <div id="videoGenResult"></div>
+        </div>
+      </section>
 
-    setInterval(() => {
-      const now = new Date();
-      const task = tasks[Math.floor(Math.random() * tasks.length)];
-      const entry = document.createElement("p");
-      entry.textContent = `[${now.toLocaleString()}] ${task}`;
-      log.prepend(entry);
+      <!-- AFFILIATE -->
+      <section id="affiliate" class="tab">
+        <header class="panel"><h2>Affiliate</h2></header>
+        <div class="card">
+          <h3>Scan affiliatekansen</h3>
+          <p>AI zoekt producten + geeft ASINs / links. Zorg dat je affiliate-tag ingesteld is in backend.</p>
+          <div class="form-row">
+            <input id="affSearch" placeholder="zoekterm (bv. 'fitness gear')">
+            <button id="scanAffiliateBtn">Scan</button>
+          </div>
+          <div id="affiliateResults"></div>
+        </div>
+      </section>
 
-      const earn = (Math.random() * 10).toFixed(2);
-      totalIncome += parseFloat(earn);
-      monthEarnings += parseFloat(earn);
-      income.textContent = `€${totalIncome.toFixed(2)}`;
+      <!-- POD -->
+      <section id="pod" class="tab">
+        <header class="panel"><h2>Print-on-Demand</h2></header>
+        <div class="card">
+          <h3>Maak produkt (POD)</h3>
+          <input id="podTitle" placeholder="Producttitel (bv. AI Meme Tee)">
+          <input id="podPrompt" placeholder="Design prompt (bv. 'funny cat quote, minimal')">
+          <div class="form-row">
+            <button id="createPodBtn">Maak product (POD)</button>
+          </div>
+          <div id="podResult"></div>
+        </div>
+      </section>
 
-      if (now.getMonth() !== lastMonth) {
-        const invoice = document.createElement("p");
-        invoice.textContent = `Invoice for month ${lastMonth + 1}: €${monthEarnings.toFixed(2)}`;
-        invoices.prepend(invoice);
-        monthEarnings = 0;
-        lastMonth = now.getMonth();
-      }
-    }, 5000);
-  </script>
+      <!-- SOCIAL -->
+      <section id="social" class="tab">
+        <header class="panel"><h2>Social</h2></header>
+        <div class="card">
+          <h3>Schedule & post</h3>
+          <p>Gebruik Buffer / scheduler API of maak drafts. AI maakt captions & hashtags.</p>
+          <div class="form-row">
+            <input id="socialText" placeholder="Caption or headline">
+            <button id="postSocialBtn">Maak draft / plan</button>
+          </div>
+          <div id="socialResult"></div>
+        </div>
+      </section>
+
+      <!-- ANALYTICS -->
+      <section id="analytics" class="tab">
+        <header class="panel"><h2>Analytics</h2></header>
+        <div class="card">
+          <h3>Realtime metrics</h3>
+          <div class="metrics-row">
+            <div class="metric">
+              <div id="metricViews" class="metric-value">0</div>
+              <div class="metric-label">Views</div>
+            </div>
+            <div class="metric">
+              <div id="metricClicks" class="metric-value">0</div>
+              <div class="metric-label">Affiliate clicks</div>
+            </div>
+            <div class="metric">
+              <div id="metricSales" class="metric-value">0</div>
+              <div class="metric-label">POD sales</div>
+            </div>
+          </div>
+          <div id="analyticsGraph">Graph placeholder (backend data required)</div>
+        </div>
+      </section>
+
+      <!-- ALERTS -->
+      <section id="alerts" class="tab">
+        <header class="panel"><h2>Alerts</h2></header>
+        <div class="card">
+          <h3>Acties benodigd</h3>
+          <div id="alertsList"><p>Geen acties op dit moment.</p></div>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section id="settings" class="tab">
+        <header class="panel"><h2>Instellingen</h2></header>
+        <div class="card">
+          <h3>API & Secrets</h3>
+          <p>API-keys moeten in je server-side environment (Replit/Vercel). Zet hier alleen test email voor notificaties.</p>
+          <div class="form-row">
+            <input id="notifyEmail" placeholder="Jouw e-mail voor alerts">
+            <button id="saveNotifyBtn">Opslaan (frontend)</button>
+          </div>
+          <div id="settingsMsg"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/client.js"></script>
 </body>
 </html>
