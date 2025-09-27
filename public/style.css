@@ -1,0 +1,27 @@
+/* style.css - clean modern dashboard */
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,Arial;background:#f4f6f9;color:#1f2937}
+.app{display:flex;min-height:100vh}
+.sidebar{width:260px;background:#0f1720;color:#fff;padding:20px;display:flex;flex-direction:column}
+.brand h1{margin:0;font-size:1.1rem}
+.brand p{margin:4px 0 12px;font-size:0.85rem;color:#9ca3af}
+.sidebar nav{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.sidebar nav button{background:transparent;border:none;color:#cbd5e1;padding:10px 12px;text-align:left;border-radius:8px;cursor:pointer}
+.sidebar nav button.active, .sidebar nav button:hover{background:#111827;color:#fff}
+.sidebar-foot{margin-top:auto;font-size:0.8rem;color:#9ca3af}
+.ghost{background:transparent;border:1px solid #374151;color:#fff;padding:8px;border-radius:8px;cursor:pointer}
+.main{flex:1;padding:20px}
+.panel{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.card{background:#fff;border-radius:10px;padding:16px;margin-bottom:12px;box-shadow:0 8px 24px rgba(15,23,42,0.06)}
+.grid{display:grid;grid-template-columns:1fr 320px;gap:12px}
+.log{max-height:220px;overflow:auto;background:#fbfdff;border:1px solid #eef2ff;padding:10px;border-radius:6px}
+.big{font-size:26px;font-weight:700;color:#ef4444}
+.form-row{display:flex;gap:8px;margin-top:10px}
+.form-row input, .form-row select{padding:8px;border-radius:8px;border:1px solid #e6edf3;flex:1}
+.form-row button{padding:8px 12px;border-radius:8px;border:none;background:#4caf50;color:#fff;cursor:pointer}
+.mini{font-size:0.9rem;color:#6b7280;margin-top:6px}
+.metrics-row{display:flex;gap:12px}
+.metric{background:#fff;padding:12px;border-radius:8px;flex:1;text-align:center}
+.metric-value{font-size:20px;font-weight:700}
+.alert-row{background:#fff3cd;padding:10px;border-radius:8px;margin-bottom:8px;border:1px solid #ffeeba}
+.channel-row{padding:8px;border:1px dashed #e6eef6;border-radius:6px;margin-top:8px}
