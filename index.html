@@ -1,10 +1,223 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>AI Business Bot</title>
-  </head>
-  <body>
-    <h1>🚀 AI Business Bot is Live!</h1>
-    <p>Stap 1 werkt ✅. Dit is je testpagina.</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Business Command Center 🚀</title>
+  <style>
+    :root {
+      --primary: #4CAF50;
+      --secondary: #2c3e50;
+      --accent: #ff9800;
+      --bg: #f4f6f9;
+      --white: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--secondary);
+    }
+    header {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      box-shadow: 0 4px 8px var(--shadow);
+    }
+    header h1 { margin: 0; }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: var(--white);
+      box-shadow: 0 2px 6px var(--shadow);
+    }
+    nav button {
+      flex: 1;
+      padding: 1rem;
+      border: none;
+      background: none;
+      font-weight: bold;
+      cursor: pointer;
+      color: var(--secondary);
+      transition: background 0.3s;
+    }
+    nav button:hover, nav button.active {
+      background: var(--primary);
+      color: white;
+    }
+    main {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    section {
+      display: none;
+      animation: fade 0.4s ease-in-out;
+    }
+    section.active { display: block; }
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+    .card h2 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    #log {
+      max-height: 200px;
+      overflow-y: auto;
+      font-size: 0.9rem;
+      background: #fafafa;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      border-radius: 6px;
+    }
+    #log p {
+      margin: 0.3rem 0;
+      border-bottom: 1px dotted #eee;
+      padding-bottom: 0.2rem;
+    }
+    .income {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--accent);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AI Business Command Center 🚀</h1>
+    <p>Autonomous AI creating income streams 24/7</p>
+  </header>
+
+  <nav>
+    <button class="active" data-tab="dashboard">Dashboard</button>
+    <button data-tab="youtube">YouTube</button>
+    <button data-tab="affiliate">Affiliate</button>
+    <button data-tab="print">Print-on-Demand</button>
+    <button data-tab="social">Social Media</button>
+    <button data-tab="analytics">Analytics</button>
+  </nav>
+
+  <main>
+    <!-- Dashboard -->
+    <section id="dashboard" class="active">
+      <div class="card">
+        <h2>AI Activity Log 🧠</h2>
+        <div id="log"><p>[System Idle] Waiting for AI tasks...</p></div>
+      </div>
+      <div class="card">
+        <h2>Total Income 💰</h2>
+        <div class="income" id="income">€0.00</div>
+      </div>
+      <div class="card">
+        <h2>Monthly Invoices 🧾</h2>
+        <div id="invoices"><p>No invoices yet.</p></div>
+      </div>
+    </section>
+
+    <!-- YouTube -->
+    <section id="youtube">
+      <div class="card">
+        <h2>YouTube Automation 📺</h2>
+        <p>AI generates trending video ideas, scripts, and automates uploads.</p>
+      </div>
+    </section>
+
+    <!-- Affiliate -->
+    <section id="affiliate">
+      <div class="card">
+        <h2>Affiliate Marketing 🔗</h2>
+        <p>AI finds profitable products and creates campaigns automatically.</p>
+      </div>
+    </section>
+
+    <!-- Print-on-Demand -->
+    <section id="print">
+      <div class="card">
+        <h2>Print-on-Demand 👕</h2>
+        <p>AI designs products and pushes them to stores like Shopify/Printful.</p>
+      </div>
+    </section>
+
+    <!-- Social Media -->
+    <section id="social">
+      <div class="card">
+        <h2>Social Media Growth 📱</h2>
+        <p>AI creates posts, manages accounts, and grows followers automatically.</p>
+      </div>
+    </section>
+
+    <!-- Analytics -->
+    <section id="analytics">
+      <div class="card">
+        <h2>Analytics 📊</h2>
+        <p>Track income streams, performance, and receive strategy suggestions.</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Tab switching
+    const buttons = document.querySelectorAll("nav button");
+    const sections = document.querySelectorAll("main section");
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        sections.forEach(sec => sec.classList.remove("active"));
+        document.getElementById(btn.dataset.tab).classList.add("active");
+      });
+    });
+
+    // Simulation of AI tasks
+    const log = document.getElementById("log");
+    const income = document.getElementById("income");
+    const invoices = document.getElementById("invoices");
+    let totalIncome = 0;
+    let monthEarnings = 0;
+    let lastMonth = new Date().getMonth();
+
+    const tasks = [
+      "Generated a trending YouTube script 🎬",
+      "Created a new Shopify store 🛍️",
+      "Designed 3 new Print-on-Demand T-shirts 👕",
+      "Posted 5 affiliate articles 🔗",
+      "Analyzed TikTok trends 📱",
+      "Optimized ad campaign for fitness niche 💪",
+      "Scanned global hashtags for new products 🌍"
+    ];
+
+    setInterval(() => {
+      const now = new Date();
+      const task = tasks[Math.floor(Math.random() * tasks.length)];
+      const entry = document.createElement("p");
+      entry.textContent = `[${now.toLocaleString()}] ${task}`;
+      log.prepend(entry);
+
+      const earn = (Math.random() * 10).toFixed(2);
+      totalIncome += parseFloat(earn);
+      monthEarnings += parseFloat(earn);
+      income.textContent = `€${totalIncome.toFixed(2)}`;
+
+      if (now.getMonth() !== lastMonth) {
+        const invoice = document.createElement("p");
+        invoice.textContent = `Invoice for month ${lastMonth + 1}: €${monthEarnings.toFixed(2)}`;
+        invoices.prepend(invoice);
+        monthEarnings = 0;
+        lastMonth = now.getMonth();
+      }
+    }, 5000);
+  </script>
+</body>
 </html>
